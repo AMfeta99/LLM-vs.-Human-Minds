@@ -8,7 +8,7 @@ guess: adivinhar objecto
 3- who is lying?: descobrir quem está a mentir
 
 
-## Game modes
+### Game modes
 These games have the option of choosing:
 - LLM vs. LLM
    : Two virtual players who complement each other
