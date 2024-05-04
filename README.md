@@ -24,4 +24,4 @@ Although these models are not prepared for these games, it is an interesting/fun
 ## LLM vs. Human Minds
 "Can u guess?" This is the game that challenges Human to face LLM models in a variety of games, from guessing to association games... challenge yourself! Will you be able to win?
 
-Who said AI is complex, difficult and scary? In fact AI can also be interesting and fun...  so it relaxes and exercises your brain and has fun challenging the state of the model ;)
+Who said AI is complex, difficult and scary? In fact AI can also be interesting and fun...  so just relax and exercise your brain and has fun challenging the state of the model ;)
