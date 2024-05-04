@@ -1,14 +1,14 @@
 # 
 This repository is the result of experiments with LLMs to develop skills in software development using state-of-the-art LLM and popular sources/tools such as langchain, openai API...
 
-2 jogos:
-associação: " adivinhar o q tem em comum" /adivinhar regra (vou para a ilha e levo)
+Games:
+1- associação: " adivinhar o q tem em comum" /adivinhar regra (vou para a ilha e levo)
 guess: adivinhar objecto
-jogo da forca: 
-who is lying?: descobrir quem está a mentir
+2- jogo da forca: 
+3- who is lying?: descobrir quem está a mentir
 
 
-# Game modes
+## Game modes
 These games have the option of choosing:
 - LLM vs. LLM
    : Two virtual players who complement each other
