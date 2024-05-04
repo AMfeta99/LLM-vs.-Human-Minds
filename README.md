@@ -8,9 +8,13 @@ jogo da forca:
 
 
 # Game modes
-These games have the option of choosing two virtual players who complement each other or a climate that allows a human to play against a virtual player.
+These games have the option of choosing:
+- LLM vs. LLM
+  :two virtual players who complement each other
+- LLM vs. Human Minds
+  :allows a human to play against a virtual player.
 
-LLM vs. Human Minds
+## LLM vs. Human Minds
 "Can u guess?" This is the game that challenges Human to face LLM models in a variety of games, from guessing to association games... challenge yourself! Will you be able to win?
 
-#
+## LLM vs. LLM
