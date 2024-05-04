@@ -4,7 +4,9 @@ This repository is the result of experiments with LLMs to develop skills in soft
 # Games:
 1- associação: " adivinhar o q tem em comum" /adivinhar regra (vou para a ilha e levo)
 guess: adivinhar objecto
+
 2- jogo da forca: 
+
 3- who is lying?: descobrir quem está a mentir
 
 
