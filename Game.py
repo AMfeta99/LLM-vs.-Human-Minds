@@ -19,25 +19,29 @@ Statement of Class "Game". The Game computes ....
 #         elif self.option == 1:
 #             self.name='Who is Lying?'
 
+from Player import *
+
 class Game:
-    def __init__(self, model1, model2, rounds=3, questions=20):
-        self.model1 = model1
-        self.model2 = model2
+    def __init__(self, player_list, game_mode, rounds=3, questions=20):
+        self.player_list = player_list
+        self.game_mode=game_mode
         self.rounds = rounds
         self.questions = questions
 
     def start(self):
-        players = {
-            "0": {
-                "player": Player(model=self.model1),
-                "score": 0,
-            },
-            "1": {
-                "player": Player(model=self.model2),
-                "score": 0,
-            },
-        }
-
+            
+        players = {}
+        if self.game_mode==1:
+            self.player_list.append(Player(player_type='human'))
+            
+        for i, player in enumerate(self.player_list):
+            players[str(i)] = {
+                "player": player,
+                "score": 0
+            }
+        
+         
+        print(players)   
         host_index = 0
         for round in range(self.rounds):
             print(f"\nRound {round + 1}. Player {host_index + 1} is the host.")

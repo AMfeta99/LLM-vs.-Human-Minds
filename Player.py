@@ -6,14 +6,26 @@
 @Description
 Statement of Class "Player". The Player computes ....
 """
+from langchain.prompts import PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+    
 
 class Player:
-    def __init__(self, model):
+    def __init__(self, player_type='llm', model=None):
         self.observations = []
-        self.model = model
+        self.player_type=player_type
         self.concept = None
         self.history = []
-
+        self.player_setup(player_type, model)
+        
+        
+        
+    def player_setup(self, player_type, model):
+        if player_type=='llm':
+            self.model=model
+        elif player_type=='human':
+            self.model=None
+            
     def initialize_host(self):
         template = """
         You are the host of a game where a player asks questions about

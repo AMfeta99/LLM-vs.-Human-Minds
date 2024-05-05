@@ -28,5 +28,6 @@ Although these models are not prepared for these games, it is an interesting/fun
 
 Who said AI is complex, difficult and scary? In fact AI can also be interesting and fun...  so just relax and exercise your brain and has fun challenging the state of the model ;)
 
+## Setup
 
 ## Acknowledgements
