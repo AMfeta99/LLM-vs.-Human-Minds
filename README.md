@@ -1,4 +1,4 @@
-# 
+# LLM vs. Human Minds
 
 ![image](https://github.com/AMfeta99/LLM-vs.-Human-Minds/assets/74252797/fc4107c1-d87f-41fb-9475-67dbc9b453fa)
 
@@ -33,3 +33,4 @@ Who said AI is complex, difficult and scary? In fact AI can also be interesting 
 ## Setup
 
 ## Acknowledgements
+https://medium.com/@GPTPlus/ai-in-human-robot-interaction-884ef04bdd88
