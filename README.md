@@ -3,7 +3,9 @@ This repository is the result of experiments with LLMs to develop skills in soft
 
 # Games:
 1- Guessing Game
+
 2- Association Game
+
 3- Impostor Game (Who is Lying?)
 
 ### Game modes
