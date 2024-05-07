@@ -1,5 +1,6 @@
 # 
-![image](https://github.com/AMfeta99/LLM-vs.-Human-Minds/assets/74252797/be854467-1e01-4112-8d09-e7f456cacb9e)
+![image](https://github.com/AMfeta99/LLM-vs.-Human-Minds/assets/74252797/0c18ab4e-e936-4990-bec2-d349b949cfd7)
+
 
 This repository is the result of experiments with LLMs to develop skills in software development using state-of-the-art LLM and popular sources/tools such as langchain, openai API...
 
