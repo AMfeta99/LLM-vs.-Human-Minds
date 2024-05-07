@@ -53,7 +53,7 @@ if __name__ =="__main__":
     
     # Game to play
     str_object=' game'
-    game_option_dict={0: 'Guessing', 1: 'Who is lying?'}
+    game_option_dict={0: 'Guessing Game', 1: 'Association Game', 2: 'Impostor Game'}
     game_str_input='Enter the number corresponding to the game you want to play:  '
     
     game_option, _=select_option(game_option_dict, game_str_input, str_object)
@@ -71,27 +71,30 @@ if __name__ =="__main__":
     
     str_object='LLM Player'
     LLM_option_dict={0: 'llama2', 1: 'llama3'}
-    str_input='Choose the LLM player :'
+    str_input='Choose the LLM player : '
     _, LLM_player=select_option( LLM_option_dict, str_input, str_object)
     
     
-    player_list.append(Player(model=Ollama(model=LLM_player)))
+    player_list.append(Player(game_option=game_option, model=Ollama(model=LLM_player)))
     
     if game_mode==0 or game_option==1:
         str_object=' Second LLM Player'
-        str_input='Choose the second LLM player :'
+        str_input='Choose the second LLM player : '
         _, LLM_player_2= select_option( LLM_option_dict, str_input, str_object)
-        player_list.append(Player(model=Ollama(model=LLM_player_2)))
+        player_list.append(Player(game_option=game_option, model=Ollama(model=LLM_player_2)))
     
     if game_mode==0 and game_option==1:
         str_object=' Third LLM Player'
-        str_input='Choose the Third LLM player :'
+        str_input='Choose the Third LLM player : '
         _, LLM_player_3= select_option( LLM_option_dict, str_input, str_object)
-        player_list.append(Player(model=Ollama(model=LLM_player_3)))
+        player_list.append(Player(game_option=game_option,model=Ollama(model=LLM_player_3)))
             
             
     game=Game(player_list, game_mode)
-    game.start()
+    if game_mode:
+        game.start_AI_H()
+    else:
+        game.start_AI()
     
     
     
