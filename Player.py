@@ -19,6 +19,7 @@ class Player:
         self.game_option=game_option
         self.concept = None
         self.history = []
+        # self.set_words = []
         self.player_setup(player_type, model)
         self.template = self.load_template_from_config()
         
