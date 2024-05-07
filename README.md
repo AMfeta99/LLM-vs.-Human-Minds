@@ -2,13 +2,9 @@
 This repository is the result of experiments with LLMs to develop skills in software development using state-of-the-art LLM and popular sources/tools such as langchain, openai API...
 
 # Games:
-1- associação: " adivinhar o q tem em comum" /adivinhar regra (vou para a ilha e levo)
-guess: adivinhar objecto
-
-2- jogo da forca: 
-
-3- who is lying?: descobrir quem está a mentir
-
+1- Guessing Game
+2- Association Game
+3- Impostor Game (Who is Lying?)
 
 ### Game modes
 These games have the option of choosing:
