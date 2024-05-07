@@ -67,9 +67,9 @@ class Game:
             if round==1:
                 print_b=False
 
-        # print("Final score:")
-        # print(f"Player 1: {players['0']['score']}")
-        # print(f"Player 2: {players['1']['score']}")
+        print("Final score:")
+        for player_id in ['0', '1']:
+            print(f"Player {int(player_id) + 1}: {players[player_id]['score']}")
 
 
     def start_AI(self):

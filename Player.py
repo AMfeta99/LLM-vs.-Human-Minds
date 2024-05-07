@@ -33,9 +33,15 @@ class Player:
     def load_template_from_config(self):
         if self.game_option==0:
             config_file_path="Guessing_game.json"
+        elif self.game_option==1:
+            config_file_path="PatternPuzzle_game.json"
 
-        with open(config_file_path, 'r') as f:
-            template = json.load(f)
+        try: 
+            with open(config_file_path, 'r') as f:
+                template = json.load(f)
+        except json.JSONDecodeError as e:
+            print("JSON decoding error:", e)
+            
         return template
 
             
