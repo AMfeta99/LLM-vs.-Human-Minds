@@ -21,8 +21,9 @@ import logging
 
 
 ## Import functions?
-from Player import *
-from Game import *
+# import GuessingGame
+from GuessingGame.Player import *
+from GuessingGame.Game import *
 
 #______________________________ Game_________________________________
 
