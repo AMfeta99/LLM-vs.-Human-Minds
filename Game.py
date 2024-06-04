@@ -20,13 +20,13 @@ class Game:
     def start_AI_H(self):
             
         players = {}
-        if self.game_mode==1:
-            game_option=(self.player_list[0]).game_option
-            self.player_list.append( Player(game_option, player_type='human'))
-            # Assuming players is a list containing player objects
-            template = (self.player_list[0]).template 
-            # Now you can use the template attribute as needed
-            print(template["Game_summary"].format(questions=self.questions, rounds=self.rounds))
+        # if self.game_mode==1:
+            # game_option=(self.player_list[0]).game_option
+            # self.player_list.append(Player(game_option, player_type='human'))
+        # Assuming players is a list containing player objects
+        template = (self.player_list[0]).template 
+        # Now you can use the template attribute as needed
+        print(template["Game_summary"].format(questions=self.questions, rounds=self.rounds))
             
         for i, player in enumerate(self.player_list):
             players[str(i)] = {
@@ -40,17 +40,26 @@ class Game:
         print_b=True
         for round in range(self.rounds):
             print(f"\nRound {round + 1}. Player {host_index + 1} is the host.")
-
+    
             player_index = 1 - host_index
-            if self._play(
-                players[str(host_index)]["player"], players[str(player_index)]["player"]
-            ):
+            host_player = players[str(host_index)]["player"]
+            guessing_player = players[str(player_index)]["player"]
+    
+            # Determine which method to use based on the class of the guessing player
+            if isinstance(guessing_player, Player_G):
+                guessed_correctly = self._play(host_player, guessing_player)
+            elif isinstance(guessing_player, Player_P):
+                guessed_correctly = self._play_Pattern(host_player, guessing_player)
+            else:
+                raise TypeError("Unsupported player type")
+    
+            if guessed_correctly:
                 print(f"Player {player_index + 1} guessed correctly.")
                 players[str(player_index)]["score"] += 1
             else:
                 print(f"Player {player_index + 1} didn't guess correctly.")
                 players[str(host_index)]["score"] += 1
-
+    
             host_index = 1 - host_index
             if round==1:
                 print_b=False
@@ -60,38 +69,80 @@ class Game:
             print(f"Player {int(player_id) + 1}: {players[player_id]['score']}")
 
 
-    def start_AI(self):
+    # def start_AI(self):
             
+    #     players = {}
+    #     for i, player in enumerate(self.player_list):
+    #         players[str(i)] = {
+    #             "player": player,
+    #             "score": 0
+    #         }
+        
+         
+    #     print(players)   
+    #     host_index = 0
+        
+    #     for round in range(self.rounds):
+    #         print(f"\nRound {round + 1}. Player {host_index + 1} is the host.")
+
+    #         player_index = 1 - host_index
+    #         if self._play(
+    #             players[str(host_index)]["player"], players[str(player_index)]["player"]):
+    #             print(f"Player {player_index + 1} guessed correctly.")
+    #             players[str(player_index)]["score"] += 1
+    #         else:
+    #             print(f"Player {player_index + 1} didn't guess correctly.")
+    #             players[str(host_index)]["score"] += 1
+
+    #         host_index = 1 - host_index
+
+
+    #     print("Final score:")
+    #     for player_id in ['0', '1']:
+    #         print(f"Player {int(player_id) + 1}: {players[player_id]['score']}")
+            
+    def start_AI(self):
         players = {}
         for i, player in enumerate(self.player_list):
             players[str(i)] = {
                 "player": player,
                 "score": 0
             }
-        
-         
-        print(players)   
+    
+        print(players)
         host_index = 0
-        
+    
         for round in range(self.rounds):
             print(f"\nRound {round + 1}. Player {host_index + 1} is the host.")
-
+    
             player_index = 1 - host_index
-            if self._play(
-                players[str(host_index)]["player"], players[str(player_index)]["player"]):
+            host_player = players[str(host_index)]["player"]
+            guessing_player = players[str(player_index)]["player"]
+    
+            # Determine which method to use based on the class of the guessing player
+            if isinstance(guessing_player, Player_G):
+                guessed_correctly = self._play(host_player, guessing_player)
+            elif isinstance(guessing_player, Player_P):
+                guessed_correctly = self._play_Pattern(host_player, guessing_player)
+            else:
+                raise TypeError("Unsupported player type")
+    
+            if guessed_correctly:
                 print(f"Player {player_index + 1} guessed correctly.")
                 players[str(player_index)]["score"] += 1
             else:
                 print(f"Player {player_index + 1} didn't guess correctly.")
                 players[str(host_index)]["score"] += 1
-
+    
             host_index = 1 - host_index
-
-
+    
         print("Final score:")
         for player_id in ['0', '1']:
             print(f"Player {int(player_id) + 1}: {players[player_id]['score']}")
-            
+    
+
+
+
             
     def _play(self, host, player, print_b=False):
         host.initialize_host(print_b)
@@ -106,11 +157,42 @@ class Game:
 
             player.add_observation(question, answer)
 
+            
             if "guessed" in answer.lower():
                 print(f"The Concept was {host.concept} ")
+                player.add_history(host.concept)
                 return True
 
         print(f"The Concept was {host.concept} ")
+        player.add_history(host.concept)
+        return False
+    
+    def _play_Pattern(self, host, player, print_b=False):
+        host.initialize_host(print_b)
+        
+        for i in range(2):
+            host.get_new_word_host(print_b)
+        
+        player.initialize_player()
+        if self.game_mode==0:
+            print(f"Rule: {host.rule}")
+        for question_index in range(self.questions):
+            print(f"The words are {host.set_objects} ")
+            question = player.ask(print_b)
+            answer = host.answer(question, print_b)
+
+            print(f"Guess {question_index + 1}: {question}. Answer: {answer}")
+
+            player.add_observation(question, answer)
+            host.get_new_word_host(print_b)
+            
+            if "guessed" in answer.lower():
+                print(f"The rule was {host.rule} ")
+                player.add_history(host.rule)
+                return True
+
+        print(f"The rule was {host.rule} ")
+        player.add_history(host.rule)
         return False
     
     # def start(self):

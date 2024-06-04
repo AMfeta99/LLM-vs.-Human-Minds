@@ -22,8 +22,8 @@ import logging
 
 ## Import functions?
 # import GuessingGame
-from GuessingGame.Player import *
-from GuessingGame.Game import *
+from Player import *
+from Game import *
 
 #______________________________ Game_________________________________
 
@@ -46,12 +46,15 @@ def select_option(option_dict, string_input, str_object):
         print("Invalid option selected.")
         
     return game_option, selected_option
+
+def initialize_player(game_option, player_type='llm', model=None):
+    PlayerClass = Player_op[game_option]
+    return PlayerClass(game_option, player_type, model)
     
 
 if __name__ =="__main__":
     
     ## Game options
-    
     # Game to play
     str_object=' game'
     game_option_dict={0: 'Guessing Game', 1: 'Pattern Puzzel Game', 2: 'Impostor Game'}
@@ -73,32 +76,45 @@ if __name__ =="__main__":
     str_object='LLM Player'
     LLM_option_dict={0: 'llama2', 1: 'llama3'}
     str_input='Choose the LLM player : '
-    _, LLM_player=select_option( LLM_option_dict, str_input, str_object)
+    _, LLM_player=select_option(LLM_option_dict, str_input, str_object)
     
+    # Mapping game_option to player classes
+    Player_op = {0: Player_G, 1: Player_P, 2: Player_G}
+    player_type="llm"
+    model = Ollama(model=LLM_player) 
+    player_object = initialize_player(game_option, player_type, model)
+    player_list = [initialize_player(game_option, player_type, model)]
     
-    player_list.append(Player(game_option=game_option, model=Ollama(model=LLM_player)))
-    
+        
     if game_mode==0 or game_option==2:
         str_object=' Second LLM Player'
         str_input='Choose the second LLM player : '
         _, LLM_player_2= select_option( LLM_option_dict, str_input, str_object)
-        player_list.append(Player(game_option=game_option, model=Ollama(model=LLM_player_2)))
+        model = Ollama(model=LLM_player_2) 
+        player_object = initialize_player(game_option, player_type, model)
+        player_list.append(initialize_player(game_option, player_type, model))
+
     
     if game_mode==0 and game_option==2:
         str_object=' Third LLM Player'
         str_input='Choose the Third LLM player : '
         _, LLM_player_3= select_option( LLM_option_dict, str_input, str_object)
-        player_list.append(Player(game_option=game_option,model=Ollama(model=LLM_player_3)))
+        model = Ollama(model=LLM_player_3) 
+        player_object = initialize_player(game_option, player_type, model)
+        player_list.append(initialize_player(game_option, player_type, model))
             
             
     game=Game(player_list, game_mode)
     if game_mode:
+        player_type="human"
+        player_object = initialize_player(game_option, player_type)
+        player_list.append(initialize_player(game_option, player_type))
         game.start_AI_H()
     else:
         game.start_AI()
     
     
-    
+#%%    
     ## initialize players
 
 
