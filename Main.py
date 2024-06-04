@@ -79,7 +79,7 @@ if __name__ =="__main__":
     _, LLM_player=select_option(LLM_option_dict, str_input, str_object)
     
     # Mapping game_option to player classes
-    Player_op = {0: Player_G, 1: Player_P, 2: Player_G}
+    Player_op = {0: Player_G, 1: Player_P, 2: Player_I}
     player_type="llm"
     model = Ollama(model=LLM_player) 
     player_object = initialize_player(game_option, player_type, model)
