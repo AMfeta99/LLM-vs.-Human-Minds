@@ -1,7 +1,7 @@
 
 """
 @author: Ana Maria Sousa                                               
-@datum: 05/2024
+@datum: 07/2024
 
 @Description
 Statement of Class "Player". The Player computes ....
@@ -257,8 +257,15 @@ class Player_I(Player):
         super().__init__(game_option, player_type, model)
         self.concept = None
         self.votes = []
+        self.history_questions =[]
+
+        
+    def initialize_player(self):
+        self.observations = []
+        self.history_questions =[]
 
     def initialize_host(self, print_b):
+        # self.observations = []
         self.votes = []
         if self.player_type == 'human':
             if print_b:
@@ -276,6 +283,7 @@ class Player_I(Player):
         
     def set_concept(self, word):
         self.concept=word
+        
 
     def ask(self, questions_left, print_b):
         if self.player_type == 'human':
@@ -296,33 +304,49 @@ class Player_I(Player):
             )
 
     def answer(self, question, print_b):
+        if self.concept=='spy':
+            template=self.template["answer_instruct_spy"]
+        else:
+            template=self.template["answer_instruct"]
+            
         if self.player_type == 'human':
             if print_b:
-                print(self.template["answer_instruct"])
+                print(template)
             print(question)
             answ = input('Is it correct? (yes/no): ')
             return answ
+        
+        elif self.concept=='spy':
+            prompt = PromptTemplate.from_template(template)
+            chain = prompt | self.model | StrOutputParser()
+            return chain.invoke({"history_questions": "\n".join(self.history_questions),
+                                 "question": question})
         else:
-            template = self.template["answer_instruct"]
             prompt = PromptTemplate.from_template(template)
             chain = prompt | self.model | StrOutputParser()
             return chain.invoke({"concept": self.concept, "question": question})
         
-    def host_vote_impostor(self, question, answer1, answer2, print_b):
+    def host_vote_impostor(self,  print_b):
         if self.player_type == 'human':
             if print_b:
                 print(self.template["host_vote_instruct"])
-            answ = input('who is the importor? (player 1/player 2): ')
-            return answ
+            answ = input('who is the impostor? (player 1/player 2): ')
+            return self.votes.append(answ)
         else:
             template = self.template["host_vote_instruct"]
             prompt = PromptTemplate.from_template(template)
             chain = prompt | self.model | StrOutputParser()
-            vote=chain.invoke({ "answer1": answer1, "answer2": answer2, "concept": self.concept,"question": question})
+            # vote=chain.invoke({ "answer1": answer1, "answer2": answer2, "concept": self.concept,"question": question})
+            vote=chain.invoke({ "concept": self.concept, "observations": self.observations})
+
             self.votes.append(vote)
 
-    def add_observation(self, question):
-        self.observations.append(f"Question: {question}")
+    def add_observation(self, question, answer1, answer2):
+        # self.observations.append(f"Question: {question}")
+        self.observations.append(f"Question: {question}  Player 1 answer: {answer1}. Player 2 answer: {answer2}")
+        
+    def add_other_players_aws_spy(self, question, answer):
+        self.history_questions.append(f"Question: {question}  Answer: {answer}")
         
     def add_history(self, new_concept):
         self.history.append(new_concept)

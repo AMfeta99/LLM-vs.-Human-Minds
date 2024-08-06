@@ -1,9 +1,9 @@
 """
 @author: Ana Maria Sousa                                               
-@datum: 05/2024
+@datum: 07/2024
 
 @Description
-This script implements....
+This script implements ...
 
 
 """
@@ -19,9 +19,6 @@ import logging
 # from langchain_groq import ChatGroq
 # from langchain_openai.chat_models import ChatOpenAI
 
-
-## Import functions?
-# import GuessingGame
 from Player import *
 from Game import *
 
@@ -29,6 +26,26 @@ from Game import *
 
 
 def select_option(option_dict, string_input, str_object):
+    """
+    Method select the type of game and option based on input strings 
+
+    Parameters
+    ----------
+    option_dict : TYPE
+        DESCRIPTION.
+    string_input : TYPE
+        DESCRIPTION.
+    str_object : TYPE
+        DESCRIPTION.
+
+    Returns
+    -------
+    game_option : TYPE
+        DESCRIPTION.
+    selected_option : TYPE
+        DESCRIPTION.
+
+    """
     
     # Printing the options for the user
     print(f"Choose {str_object} :")
@@ -48,6 +65,24 @@ def select_option(option_dict, string_input, str_object):
     return game_option, selected_option
 
 def initialize_player(game_option, player_type='llm', model=None):
+    """
+    
+
+    Parameters
+    ----------
+    game_option : TYPE
+        DESCRIPTION.
+    player_type : TYPE, optional
+        DESCRIPTION. The default is 'llm'.
+    model : TYPE, optional
+        DESCRIPTION. The default is None.
+
+    Returns
+    -------
+    TYPE
+        DESCRIPTION.
+
+    """
     PlayerClass = Player_op[game_option]
     return PlayerClass(game_option, player_type, model)
     
@@ -75,6 +110,8 @@ if __name__ =="__main__":
     
     str_object='LLM Player'
     LLM_option_dict={0: 'llama2', 1: 'llama3'}
+    #LLM_option_dict={0: 'llama-pro', 1: 'llama3', 2: 'gemma', 3:'phi', 4:'wizard-math'}
+
     str_input='Choose the LLM player : '
     _, LLM_player=select_option(LLM_option_dict, str_input, str_object)
     
@@ -102,13 +139,15 @@ if __name__ =="__main__":
         model = Ollama(model=LLM_player_3) 
         player_object = initialize_player(game_option, player_type, model)
         player_list.append(initialize_player(game_option, player_type, model))
+        
             
             
     game=Game(player_list, game_mode)
     if game_mode:
         player_type="human"
         player_object = initialize_player(game_option, player_type)
-        player_list.append(initialize_player(game_option, player_type))
+        # player_list.append(initialize_player(game_option, player_type))
+        player_list.insert(0, initialize_player(game_option, player_type, model))
         game.start_AI_H()
     else:
         game.start_AI()
