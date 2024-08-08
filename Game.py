@@ -1,10 +1,25 @@
 
 """
 @author: Ana Maria Sousa                                               
-@datum: 07/2024
+@datum: 08/2024
 
 @Description
-Statement of Class "Game". The Game computes ....
+Statement of Class "Game". 
+The Game class manages the overall flow of the game, determining which player 
+should take action at each stage.
+
+The Game class supports two modes:
+    -LLM vs. LLM: Both players are language models. In this mode, all elements 
+    of the game are fully visible, allowing users to observe the gameplay and 
+    analyze the interaction between the models.
+    
+    -LLM vs. Human: A human player competes against an LLM. In this mode, the 
+    target role or word is hidden from the human player to ensure a fair 
+    challenge against the virtual opponent.
+
+In both modes, the Game class tracks the score and history of the game. It also 
+provides necessary prompts and instructions to the players as needed.
+
 """
 import random
 from Player import *
@@ -12,43 +27,46 @@ from Player import *
 class Game:
     def __init__(self, player_list, game_mode, rounds=2, questions=5):
         """
-        
+        Initialize the Game class with players, game mode, number of rounds, and questions per round.
 
         Parameters
         ----------
-        player_list : TYPE
-            DESCRIPTION.
-        game_mode : TYPE
-            DESCRIPTION.
-        rounds : TYPE, optional
-            DESCRIPTION. The default is 2.
-        questions : TYPE, optional
-            DESCRIPTION. The default is 5.
+        player_list : list
+            A list of player objects participating in the game.
+        game_mode : str
+            The mode of the game, such as 'LLM vs LLM' or 'LLM vs Human'.
+        rounds : int, optional
+            The number of rounds to be played in the game. The default is 2.
+        questions : int, optional
+            The number of questions per round. The default is 5.
 
         Returns
         -------
         None.
-
         """
+        
         self.player_list = player_list
         self.game_mode=game_mode
         self.rounds = rounds
         self.questions = questions
 
 
+
     def start_AI_H(self):
         """
-        
-
+        Manages and tracks the gameplay, including rounds, player actions, and scores.
+    
+        This method handles the flow of Human vs LLM game. The method also prints the game 
+        summary, tracks scores, and updates  players after each round.
+    
         Raises
         ------
         TypeError
-            DESCRIPTION.
-
+            Raised if an unsupported player type is encountered.
+    
         Returns
         -------
-        None.
-
+        None
         """
             
         players = {}
@@ -101,39 +119,23 @@ class Game:
             print(f"Player {int(player_id) + 1}: {players[player_id]['score']}")
 
 
-    # def start_AI(self):
-            
-    #     players = {}
-    #     for i, player in enumerate(self.player_list):
-    #         players[str(i)] = {
-    #             "player": player,
-    #             "score": 0
-    #         }
-        
-         
-    #     print(players)   
-    #     host_index = 0
-        
-    #     for round in range(self.rounds):
-    #         print(f"\nRound {round + 1}. Player {host_index + 1} is the host.")
-
-    #         player_index = 1 - host_index
-    #         if self._play(
-    #             players[str(host_index)]["player"], players[str(player_index)]["player"]):
-    #             print(f"Player {player_index + 1} guessed correctly.")
-    #             players[str(player_index)]["score"] += 1
-    #         else:
-    #             print(f"Player {player_index + 1} didn't guess correctly.")
-    #             players[str(host_index)]["score"] += 1
-
-    #         host_index = 1 - host_index
-
-
-    #     print("Final score:")
-    #     for player_id in ['0', '1']:
-    #         print(f"Player {int(player_id) + 1}: {players[player_id]['score']}")
             
     def start_AI(self):
+        """
+        Manages and tracks the gameplay, including rounds, player actions, and scores.
+    
+        This method handles the flow of LLM vs LLM game. The method also prints the game 
+        summary, tracks scores, and updates  players after each round.
+    
+        Raises
+        ------
+        TypeError
+            Raised if an unsupported player type is encountered.
+    
+        Returns
+        -------
+        None
+        """
         players = {}
         for i, player in enumerate(self.player_list):
             players[str(i)] = {
@@ -179,6 +181,31 @@ class Game:
 
             
     def _play(self, host, player, print_b=False):
+        """
+        Conducts a round of the guessing game between a host and a player.
+    
+        In this method, the host presents a concept, and the player asks a 
+        series of questions to guess the concept. The host provides answers, 
+        and the game continues until either the concept is guessed 
+        correctly or the questions are exhausted.
+    
+        Parameters
+        ----------
+        host : Host
+            The player acting as the host, responsible for providing the 
+            concept and answering questions.
+        player : Player
+            The player attempting to guess the concept by asking questions.
+        print_b : bool, optional
+            A flag indicating whether to print additional details about the 
+            game. The default is False.
+    
+        Returns
+        -------
+        bool
+            Returns True if the player correctly guesses the concept during 
+            the round; otherwise, returns False.
+        """
         host.initialize_host(print_b)
         player.initialize_player()
         if self.game_mode==0:
@@ -201,7 +228,34 @@ class Game:
         player.add_history(host.concept)
         return False
     
+    
+    
     def _play_Pattern(self, host, player, print_b=False):
+        """
+        Conducts a round of the pattern puzzle game between a host and a player.
+    
+        In this game, the host presents a set of words following a specific 
+        pattern/rule, and the player tries to guess the underlying rule by 
+        asking questions. The game continues until the player either guesses 
+        the rule correctly or the allowed number of guesses is exhausted.
+    
+        Parameters
+        ----------
+        host : Host
+            The player acting as the host, responsible for providing words that 
+            follow a specific pattern or rule.
+        player : Player
+            The player attempting to guess the rule by asking questions.
+        print_b : bool, optional
+            A flag indicating whether to print additional details about the 
+            game. The default is False.
+    
+        Returns
+        -------
+        bool
+            Returns True if the player correctly guesses the rule during the 
+            round; otherwise, returns False.
+        """
         host.initialize_host(print_b)
         
         for i in range(2):
@@ -229,7 +283,39 @@ class Game:
         player.add_history(host.rule)
         return False
     
+    
     def _play_Impostor(self, host, player1, player2, print_b=False):
+        """
+        Conducts a round of the impostor game, where players must identify the 
+        impostor among them.
+    
+        In this game , one player is randomly assigned the role of the impostor 
+        (or "spy"), while the other player knows the correct concept. 
+        Both players answer questions posed by the host, and the goal is to 
+        identify the impostor based on their answers. The game concludes when 
+        the host votes on who they believe the impostor is.
+    
+        Parameters
+        ----------
+        host : Host
+            The player acting as the host, responsible for asking questions and 
+            voting to identify the impostor.
+        player1 : Player
+            The first player, who may either be the impostor or know the 
+            correct concept.
+        player2 : Player
+            The second player, who may either be the impostor or know the 
+            correct concept.
+        print_b : bool, optional
+            A flag indicating whether to print additional details about the 
+            game. The default is False.
+    
+        Returns
+        -------
+        bool
+            Returns True if the host correctly identifies the impostor based 
+            on the players' answers; otherwise, returns False.
+        """
         host.initialize_host(print_b)
         player1.initialize_player()
         
@@ -271,46 +357,3 @@ class Game:
             return True
         return False
     
-    
-    # def start(self):
-            
-    #     players = {}
-    #     if self.game_mode==1:
-    #         self.player_list.append(Player(player_type='human'))
-    #         # Assuming players is a list containing player objects
-    #         template = (self.player_list[0]).template 
-    #         # Now you can use the template attribute as needed
-    #         print(template["Game_summary"].format(questions=self.questions, rounds=self.rounds))
-            
-            
-    #     for i, player in enumerate(self.player_list):
-    #         players[str(i)] = {
-    #             "player": player,
-    #             "score": 0
-    #         }
-        
-         
-    #     print(players)   
-    #     host_index = 0
-        
-    #     for round in range(self.rounds):
-    #         print(f"\nRound {round + 1}. Player {host_index + 1} is the host.")
-
-    #         player_index = 1 - host_index
-    #         if self._play(
-    #             players[str(host_index)]["player"], players[str(player_index)]["player"]
-    #         ):
-    #             print(f"Player {player_index + 1} guessed correctly.")
-    #             players[str(player_index)]["score"] += 1
-    #         else:
-    #             print(f"Player {player_index + 1} didn't guess correctly.")
-    #             players[str(host_index)]["score"] += 1
-
-    #         host_index = 1 - host_index
-
-    #     # print("Final score:")
-    #     # print(f"Player 1: {players['0']['score']}")
-    #     # print(f"Player 2: {players['1']['score']}")
-    #     print("Final score:")
-    #     for player_id in ['0', '1']:
-    #         print(f"Player {int(player_id) + 1}: {players[player_id]['score']}")
