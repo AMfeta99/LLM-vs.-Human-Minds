@@ -33,21 +33,22 @@ class Player():
         
     def __init__(self, game_option, player_type='llm', model=None):
         """
-        
+        Initializes a Player instance with specified game settings and player type.
 
         Parameters
         ----------
-        game_option : TYPE
-            DESCRIPTION.
-        player_type : TYPE, optional
-            DESCRIPTION. The default is 'llm'.
-        model : TYPE, optional
-            DESCRIPTION. The default is None.
+        game_option : int
+            The game option that determines which game configuration to use 
+            (e.g., 0 for Guessing Game, 1 for Pattern Puzzle, 2 for Impostor Game).
+        player_type : str, optional
+            The type of player, either 'llm' (language learning model) or 
+            'human'. The default is 'llm'.
+        model : object, optional
+            The model to be used if the player type is 'llm'. The default is None.
 
         Returns
         -------
-        None.
-
+        None
         """
         self.observations = []       
         self.player_type=player_type
@@ -58,19 +59,18 @@ class Player():
            
     def player_setup(self, player_type, model):
         """
-        
+        Configures the player based on the specified type and model.
 
         Parameters
         ----------
-        player_type : TYPE
-            DESCRIPTION.
-        model : TYPE
-            DESCRIPTION.
+        player_type : str
+            The type of player ('llm' or 'human').
+        model : object
+            The model to be used if the player type is 'llm'.
 
         Returns
         -------
-        None.
-
+        None
         """
         if player_type=='llm':
             self.model=model
@@ -81,13 +81,14 @@ class Player():
     # Assuming you're using JSON for config files
     def load_template_from_config(self):
         """
-        
+        Loads the game template from a configuration file based on the 
+        selected game option.
 
         Returns
         -------
-        template : TYPE
-            DESCRIPTION.
-
+        template : dict
+            The game template loaded from the corresponding JSON configuration 
+            file.
         """
         if self.game_option==0:
             config_file_path="Guessing_game.json"
@@ -107,12 +108,11 @@ class Player():
 
     def initialize_player(self):
         """
-        
+        Initializes the player by clearing previous observations.
 
         Returns
         -------
-        None.
-
+        None
         """
         self.observations = []
 
@@ -462,21 +462,20 @@ class Player_P(Player):
 class Player_I(Player):
     def __init__(self, game_option, player_type='llm', model=None):
         """
-        
+        Initialize a Player_I instance for impostorgames.
 
         Parameters
         ----------
-        game_option : TYPE
-            DESCRIPTION.
-        player_type : TYPE, optional
-            DESCRIPTION. The default is 'llm'.
-        model : TYPE, optional
-            DESCRIPTION. The default is None.
+        game_option : int
+            The game option that determines the specific game settings.
+        player_type : str, optional
+            The type of player, either 'human' or 'llm'. The default is 'llm'.
+        model : object, optional
+            The model to be used if the player type is 'llm'. The default is None.
 
         Returns
         -------
-        None.
-
+        None
         """
         super().__init__(game_option, player_type, model)
         self.concept = None
@@ -486,29 +485,28 @@ class Player_I(Player):
         
     def initialize_player(self):
         """
-        
+        Initializes the player by clearing observations and question history.
 
         Returns
         -------
-        None.
-
+        None
         """
         self.observations = []
         self.history_questions =[]
 
     def initialize_host(self, print_b):
         """
-        
+        Initializes the host by setting the concept and resetting votes.
 
         Parameters
         ----------
-        print_b : TYPE
-            DESCRIPTION.
+        print_b : bool
+            A flag indicating whether to print additional details about the 
+            initialization. The default is False.
 
         Returns
         -------
-        None.
-
+        None
         """
         self.votes = []
         if self.player_type == 'human':
@@ -527,37 +525,36 @@ class Player_I(Player):
         
     def set_concept(self, word):
         """
-        
+        Sets the concept for the player.
 
         Parameters
         ----------
-        word : TYPE
-            DESCRIPTION.
+        word : str
+            The concept or role to be set for the player (e.g., 'spy').
 
         Returns
         -------
-        None.
-
+        None
         """
         self.concept=word
         
 
     def ask(self, questions_left, print_b):
         """
-        
+        Asks a question based on the player's concept and remaining questions.
 
         Parameters
         ----------
-        questions_left : TYPE
-            DESCRIPTION.
-        print_b : TYPE
-            DESCRIPTION.
+        questions_left : int
+            The number of questions left to ask.
+        print_b : bool
+            A flag indicating whether to print additional details about the 
+            question. The default is False.
 
         Returns
         -------
-        TYPE
-            DESCRIPTION.
-
+        str
+            The question generated or input by the player.
         """
         if self.player_type == 'human':
             if print_b:
@@ -578,20 +575,22 @@ class Player_I(Player):
 
     def answer(self, question, print_b):
         """
-        
+        Provides an answer to a question based on the player's concept 
+        (e.g., spy or regular player).
 
         Parameters
         ----------
-        question : TYPE
-            DESCRIPTION.
-        print_b : TYPE
-            DESCRIPTION.
+        question : str
+            The question asked.
+        print_b : bool
+            A flag indicating whether to print additional details about the 
+            answer. The default is False.
 
         Returns
         -------
-        TYPE
-            DESCRIPTION.
-
+        str
+            The answer to the question, which may vary depending on the 
+            concept (e.g., 'yes'/'no' or a more detailed response).
         """
         if self.concept=='spy':
             template=self.template["answer_instruct_spy"]
@@ -617,18 +616,17 @@ class Player_I(Player):
         
     def host_vote_impostor(self,  print_b):
         """
-        
+        Collects votes on who the impostor is from the host.
 
         Parameters
         ----------
-        print_b : TYPE
-            DESCRIPTION.
+        print_b : bool
+            A flag indicating whether to print additional details about the 
+            voting process. The default is False.
 
         Returns
         -------
-        TYPE
-            DESCRIPTION.
-
+        None
         """
         if self.player_type == 'human':
             if print_b:
@@ -646,55 +644,52 @@ class Player_I(Player):
 
     def add_observation(self, question, answer1, answer2):
         """
-        
+        Adds an observation based on the answers from two players.
 
         Parameters
         ----------
-        question : TYPE
-            DESCRIPTION.
-        answer1 : TYPE
-            DESCRIPTION.
-        answer2 : TYPE
-            DESCRIPTION.
+        question : str
+            The question asked.
+        answer1 : str
+            The answer given by player 1.
+        answer2 : str
+            The answer given by player 2.
 
         Returns
         -------
-        None.
-
+        None
         """
         self.observations.append(f"Question: {question}  Player 1 answer: {answer1}. Player 2 answer: {answer2}")
         
     def add_other_players_aws_spy(self, question, answer):
         """
-        
+        Records answers from other players when the current player is a spy.
 
         Parameters
         ----------
-        question : TYPE
-            DESCRIPTION.
-        answer : TYPE
-            DESCRIPTION.
+        question : str
+            The question asked.
+        answer : str
+            The answer given by another player.
 
         Returns
         -------
-        None.
-
+        None
         """
         self.history_questions.append(f"Question: {question}  Answer: {answer}")
         
     def add_history(self, new_concept):
         """
-        
+        Adds a new concept or role to the player's history.
 
         Parameters
         ----------
-        new_concept : TYPE
-            DESCRIPTION.
+        new_concept : str
+            The new concept or role to be added to the history.
 
         Returns
         -------
-        None.
-
+        None
         """
         self.history.append(new_concept)
 
