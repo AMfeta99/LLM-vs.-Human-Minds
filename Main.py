@@ -1,10 +1,19 @@
 """
 @author: Ana Maria Sousa                                               
-@datum: 07/2024
+@datum: 08/2024
 
 @Description
-This script implements ...
+This main script allows users to select and play one of the following games:
+    -Guessing Game: Players answer questions to guess the word
+    -Pattern Puzzel Game: Players identify the common pattern, rule, or category shared by a group of words.
+    -Impostor Game: Players guess/deduce which among them is the impostor or spy.
 
+For each game is possivel to choose one of two modes:
+    -LLM vs LLM: Two LLM models playing agains each other
+    -LLM vs Human: Allows a human/user to play again a LLM
+    
+This script allows users to select the LLM (Language Learning Model) they want to play with.
+Those models are loaded from 'Ollama'
 
 """
 
@@ -21,71 +30,10 @@ import logging
 
 from Player import *
 from Game import *
+from Init_methods import *
 
-#______________________________ Game_________________________________
-
-
-def select_option(option_dict, string_input, str_object):
-    """
-    Method select the type of game and option based on input strings 
-
-    Parameters
-    ----------
-    option_dict : TYPE
-        DESCRIPTION.
-    string_input : TYPE
-        DESCRIPTION.
-    str_object : TYPE
-        DESCRIPTION.
-
-    Returns
-    -------
-    game_option : TYPE
-        DESCRIPTION.
-    selected_option : TYPE
-        DESCRIPTION.
-
-    """
     
-    # Printing the options for the user
-    print(f"Choose {str_object} :")
-    for key, value in option_dict.items():
-        print(f"{key}: {value}")
-    
-    game_option= int(input( string_input))
-    
-    # Accessing the selected game from the dictionary
-    selected_option = option_dict.get(game_option)
-    
-    if selected_option:
-        print(f"You selected the '{selected_option}'.")
-    else:
-        print("Invalid option selected.")
-        
-    return game_option, selected_option
-
-def initialize_player(game_option, player_type='llm', model=None):
-    """
-    
-
-    Parameters
-    ----------
-    game_option : TYPE
-        DESCRIPTION.
-    player_type : TYPE, optional
-        DESCRIPTION. The default is 'llm'.
-    model : TYPE, optional
-        DESCRIPTION. The default is None.
-
-    Returns
-    -------
-    TYPE
-        DESCRIPTION.
-
-    """
-    PlayerClass = Player_op[game_option]
-    return PlayerClass(game_option, player_type, model)
-    
+#%% MAIN
 
 if __name__ =="__main__":
     
@@ -122,7 +70,7 @@ if __name__ =="__main__":
     player_object = initialize_player(game_option, player_type, model)
     player_list = [initialize_player(game_option, player_type, model)]
     
-        
+    #initialize players depending of ame mode and game option that was choosen
     if game_mode==0 or game_option==2:
         str_object=' Second LLM Player'
         str_input='Choose the second LLM player : '
@@ -131,7 +79,7 @@ if __name__ =="__main__":
         player_object = initialize_player(game_option, player_type, model)
         player_list.append(initialize_player(game_option, player_type, model))
 
-    
+    # only "impostor game" as 3 players, one is the impostor and the others normal players
     if game_mode==0 and game_option==2:
         str_object=' Third LLM Player'
         str_input='Choose the Third LLM player : '
@@ -141,43 +89,17 @@ if __name__ =="__main__":
         player_list.append(initialize_player(game_option, player_type, model))
         
             
-            
+    # initialize game 
     game=Game(player_list, game_mode)
+    
+    # Start playing LLM vs LLM or Human vs LLM
     if game_mode:
         player_type="human"
         player_object = initialize_player(game_option, player_type)
-        # player_list.append(initialize_player(game_option, player_type))
         player_list.insert(0, initialize_player(game_option, player_type, model))
         game.start_AI_H()
     else:
         game.start_AI()
     
-    
-#%%    
-    ## initialize players
-
-
-# game = Game(
-#     model1=Ollama(model="llama3"),
-#     # model1=ChatOpenAI(model="gpt-4-turbo"),
-#     model2=Ollama(model="llama3"),
-#     # model2=ChatGroq(model_name="Llama3-70b-8192"),
-#     rounds=7,
-# )
-# game.start()
-
-# def parse_arguments():
-#     """ 
-#     Parse comand-line argurments for the scripts using argparse
-#     return: argparse.Namespace: a namespace containing the parsed command-line arguments.
-
-#     """
-
-    # parser= argparse.ArgumentParser(description='LLM vs. Human minds')
-    # parser.add_argument('Game mode', choices=['rock', 'paper', 'scissors']) 
-
-#     return parser.parse_args()
-# parse_arguments
-
 
 
