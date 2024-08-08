@@ -24,10 +24,6 @@ from langchain_community.llms import Ollama
 import argparse
 import logging
 
-# # model
-# from langchain_groq import ChatGroq
-# from langchain_openai.chat_models import ChatOpenAI
-
 from Player import *
 from Game import *
 from Init_methods import *
