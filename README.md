@@ -91,6 +91,20 @@ After the installation is ready, give it a try. To get started, you will be aske
 
 
 ## Challenges
+In this section, we discuss some of the challenges and unwanted behaviors observed in LLMs while developing and testing these games. 
+These insights provide a better understanding of how LLMs function and highlight their limitations. 
+Identifying these challenges and weaknesses is crucial for making improvements in future releases.
+
+- **Diversity:** Sometimes it is found that the same model when prompted in the same way, produces very similar results. For example in the llama3 guessing game case (1.1), the model often starts with the word 'bookshell'.
+  
+- **Loyalty to the prompt:** It's sometimes challenging for LLM models to strictly follow prompts from configuration files (e.g., .json). For instance, even when there's only one question left and the prompt specifies, "If there's only one question left, you must make a guess or you'll lose the game," the LLM may fail to make a guess.
+  
+- **Reasoning:** The difficulty in reasoning and the ability to ask relevant questions must be improved.
+  
+- **Heterogeneous Behavior:** Different LLMs can exhibit varying behaviors when given the same prompt due to differences in their underlying architecture, training data, and fine-tuning processes.
+- 
+Some of these issues can be mitigated by selecting the most suitable LLM model and adopting strategies that enhance the model's memory and reasoning capabilities. One possible approach is to use tools like LangGraph, use ConversationWithMemory method form langchain.memory etc...
+
 
 ## Repository_files
   - requirements.txt (text file with a list the packages used)
