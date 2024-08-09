@@ -95,7 +95,7 @@ In this section, we discuss some of the challenges and unwanted behaviors observ
 These insights provide a better understanding of how LLMs function and highlight their limitations. 
 Identifying these challenges and weaknesses is crucial for making improvements in future releases.
 
-- **Diversity:** Sometimes it is found that the same model when prompted in the same way, produces very similar results. For example in the llama3 guessing game case (1.1), the model often starts with the word 'bookshell'.
+- **Diversity:** Sometimes it is found that the same model when prompted in the same way, produces very similar results. For example in the llama3 guessing game case (1.1), the model often starts with the word 'book'.
   
 - **Loyalty to the prompt:** It's sometimes challenging for LLM models to strictly follow prompts from configuration files (e.g., .json). For instance, even when there's only one question left and the prompt specifies, "If there's only one question left, you must make a guess or you'll lose the game," the LLM may fail to make a guess.
   
