@@ -5,13 +5,13 @@ This repository is the result of experiments with LLMs to develop skills in prom
 ![image](https://github.com/AMfeta99/LLM-vs.-Human-Minds/assets/74252797/fc4107c1-d87f-41fb-9475-67dbc9b453fa)
 
 # Games:
-**1- Guessing Game: **
+**1- Guessing Game:**
 This is a two-player Game where one player (Host) thinks of a common object/concept, and the other player attempts to guess it by asking some yes/no questions. If the guesser fails, the other player earns a point. The game is played over multiple rounds, and the player with the highest score at the end wins.
 
-**2- Pattern Game: **
+**2- Pattern Game:**
 Game where player try to identify a common rule/characteristic shared by a set of words selected by the host. The player that is guessing can ask a limited number of questions. If they fail, the host earns a point.
 
-**3- Impostor Game (Who is Lying?): **
+**3- Impostor Game (Who is Lying?):**
 The Impostor Game challenges players to identify the spy among them. The host tries to find out who is the impostor by asking a questions about the given concept/word. If the host fails to correctly identify the 'spy', the other player earns a point. The game is played over multiple rounds, and the player with the highest score at the end is the winner.
 
 
