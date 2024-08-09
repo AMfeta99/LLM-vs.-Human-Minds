@@ -79,13 +79,13 @@ b) LLM vs Human mode in which the user actually asks the question/answer and int
 
 ![image](https://github.com/user-attachments/assets/571424ec-bc80-45bc-a386-d0310524b8c2) 
 
-The three games have been implemented/tested, the following photos show the case of the Pattern puzzel game and the Impostor game running in LLM vs LLM model using llama3:
+The three games have been implemented/tested, the following photos show the case of the Pattern puzzel game and the Impostor game running in LLM vs LLM mode using llama3:
 
 a) Pattern Puzzel Game: In this round, player 1 is the host and has entered a word/category and some examples that fall into that category. Player 2 tries to guess the word, he has 4 guesses, each time he guesses the host adds a new example that follows the same category. In the end, player 2 manages to guess the word "Animal"
 
 ![image](https://github.com/user-attachments/assets/d46076c6-a222-45e2-b2af-9e78e3c9847e)
 
-b)
+b) Impostor Game: Three LLM take fazem parte deste jogo. In this round, Player 1 is the host and has chosen the word "book." The host asks questions to the other players, who must respond with either "yes" or "no." Player 2 is the 'spy' and doesn't know the word. The 'spy' must try ti guess the correct answers to not be spotted , while Player 3 knows the word and answers truthfully. At the end of the round, the host tries to identify the spy based on the responses given by both players.
 
 ![image](https://github.com/user-attachments/assets/0ed93623-52f7-4cb0-888e-a0caa2231b5e)
 
