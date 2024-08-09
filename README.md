@@ -107,23 +107,23 @@ Some of these issues can be mitigated by selecting the most suitable LLM model a
 
 
 ## Repository_files
-  - requirements.txt (text file with a list the packages used)
-  - Photos (folder with some screenshots of the games)
+  - [requirements.txt](https://github.com/AMfeta99/LLM-vs.-Human-Minds/blob/main/requirements.txt) (text file with a list the packages used)
+  - [Photos](https://github.com/AMfeta99/LLM-vs.-Human-Minds/tree/main/photos) (folder with some screenshots of the games)
 
 Class/Method Files:
 
-  - Main.py (Main file, initialize/configure the game, allow selection of game options)
+  - [Main.py](https://github.com/AMfeta99/LLM-vs.-Human-Minds/blob/main/Main.py) (Main file, initialize/configure the game, allow selection of game options)
   
-  - Init_methods.py (methods for game configuration)
+  - [Init_methods.py](https://github.com/AMfeta99/LLM-vs.-Human-Minds/blob/main/Init_methods.py) (methods for game configuration)
   
-  - Player.py (Player class, implements player's roles, actions, and prompts to perform while playing)
+  - [Player.py](https://github.com/AMfeta99/LLM-vs.-Human-Minds/blob/main/Player.py) (Player class, implements player's roles, actions, and prompts to perform while playing)
   
-  - Game.py (Game class manages the overall flow of the game, determining which player should take action at each stage etc)
+  - [Game.py](https://github.com/AMfeta99/LLM-vs.-Human-Minds/blob/main/Game.py) (Game class manages the overall flow of the game, determining which player should take action at each stage etc)
 
 Config files containing all prompts used in each game for all actions/roles:
-  - Guessing_game.json
-  - PatternPuzzle_game.json
-  - Impostor_game.json
+  - [Guessing_game.json](https://github.com/AMfeta99/LLM-vs.-Human-Minds/blob/main/Guessing_game.json)
+  - [PatternPuzzle_game.json](https://github.com/AMfeta99/LLM-vs.-Human-Minds/blob/main/PatternPuzzle_game.json)
+  - [Impostor_game.json](https://github.com/AMfeta99/LLM-vs.-Human-Minds/blob/main/Impostor_game.json)
 
 
 ## Acknowledgements
