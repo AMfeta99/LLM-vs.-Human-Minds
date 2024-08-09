@@ -47,7 +47,7 @@ Who said AI is complex, difficult or scary? In fact AI can also be interesting a
          $ pip install -r requirements.txt
 - Download models from [Ollama](https://ollama.com/)
 
-Optionally (in case of [OpenAI API](https://openai.com/index/openai-api)
+Optionally (in case of [OpenAI API](https://openai.com/index/openai-api) )
 - Create account to get your API Key
 - Create a .env file with the following variable:
   
