@@ -46,4 +46,7 @@ Optionally (in case of [OpenAI API](https://openai.com/index/openai-api)
 
 
 ## Acknowledgements
-https://medium.com/@GPTPlus/ai-in-human-robot-interaction-884ef04bdd88
+- Santiago Valdarrama. (2024). [llm](https://github.com/svpino/llm/tree/main). GitHub, who contributed significantly to the idealization of the project.
+- [Ollama](https://ollama.com/). Source of llm models.
+- [OpenAi API](https://openai.com/index/openai-api/). Source of llm models.
+- [Medium](https://medium.com/@GPTPlus/ai-in-human-robot-interaction-884ef04bdd88). repository img
