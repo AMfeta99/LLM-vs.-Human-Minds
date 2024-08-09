@@ -93,6 +93,23 @@ After the installation is ready, give it a try. To get started, you will be aske
 ## Challenges
 
 ## Repository_files
+  -requirements.txt: text file with a list the packages used
+
+Class/Method Files:
+
+  -Main.py
+  
+  -Init_methods.py
+  
+  -Player.py
+  
+  -Game.py
+
+Config files containing all prompts used in each game for all actions/roles:
+  -Guessing_game.json
+  -PatternPuzzle_game.json
+  -Impostor_game.json
+
 
 ## Acknowledgements
 - Santiago Valdarrama. (2024). [llm](https://github.com/svpino/llm/tree/main). GitHub, who contributed significantly to the idealization of the project.
