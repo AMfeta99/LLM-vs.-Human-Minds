@@ -70,6 +70,7 @@ After the installation is ready, give it a try. To get started, you will be aske
 ![image](https://github.com/user-attachments/assets/70b1d560-86aa-4d63-9658-7b000d398bea)
 
 
+![image](https://github.com/user-attachments/assets/571424ec-bc80-45bc-a386-d0310524b8c2)
 
 
 
