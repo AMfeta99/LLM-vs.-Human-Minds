@@ -35,7 +35,12 @@ Who said AI is complex, difficult and scary? In fact AI can also be interesting 
          $ python3 -m venv .venv
          $ source .venv/bin/activate
          $ pip install -r requirements.txt
-        
+- Download models from [Ollama](https://ollama.com/)
+
+Optionally (in case of [OpenAI API](https://openai.com/index/openai-api)
+- Create account to get your API Key
+
+
 
 ## Acknowledgements
 https://medium.com/@GPTPlus/ai-in-human-robot-interaction-884ef04bdd88
