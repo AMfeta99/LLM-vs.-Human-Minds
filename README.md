@@ -39,10 +39,6 @@ Although these models are not prepared for these games, it is an interesting/fun
 Who said AI is complex, difficult or scary? In fact AI can also be interesting and fun...  so just relax and exercise your brain and has fun challenging the state of the model ;)
 
 
-## 
-
-
-
 ## Setup
 - Create a virtual environment and install the required packages:
   
@@ -56,6 +52,13 @@ Optionally (in case of [OpenAI API](https://openai.com/index/openai-api)
 - Create a .env file with the following variable:
   
         OPENAI_API_KEY = [ENTER YOUR OPENAI API KEY HERE]
+
+## Usage
+After the installation is ready, give it a try. To get started, you will be asked to enter: 
+-  Game you want to play:  (0: 'Guessing Game', 1: 'Pattern Puzzel Game', 2: 'Impostor Game')
+-  Game mode: (0 : 'LLM vs LLM',  1 : 'LLM vs Human' )
+-  Desired opponent virtual: (0: 'llama2', 1: 'llama3')
+
 
 
 
