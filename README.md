@@ -81,6 +81,7 @@ b) LLM vs Human mode in which the user actually asks the question/answer and int
 The three games have been implemented/tested, the following photos show the case of the Patternpuzzel game and the impostor game running LLM vs LLM model using llama3:
 
 
+![image](https://github.com/user-attachments/assets/d46076c6-a222-45e2-b2af-9e78e3c9847e)
 
 
 
