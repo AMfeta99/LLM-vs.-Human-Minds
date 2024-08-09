@@ -4,6 +4,7 @@ This repository is the result of experiments with LLMs to develop skills in prom
 - [Games](#Games)
 - [Game Modes](#Game_modes)
 - [Usage](#usage)
+- [Repository_files](#Repository_files)
 - [Setup](#Setup)
 - [Acknowledgements](#Acknowledgements)
   
@@ -78,13 +79,18 @@ b) LLM vs Human mode in which the user actually asks the question/answer and int
 
 ![image](https://github.com/user-attachments/assets/571424ec-bc80-45bc-a386-d0310524b8c2) 
 
-The three games have been implemented/tested, the following photos show the case of the Patternpuzzel game and the impostor game running LLM vs LLM model using llama3:
+The three games have been implemented/tested, the following photos show the case of the Pattern puzzel game and the Impostor game running in LLM vs LLM model using llama3:
 
+a) Pattern Puzzel Game: In this round, player 1 is the host and has entered a word/category and some examples that fall into that category. Player 2 tries to guess the word, he has 4 guesses, each time he guesses the host adds a new example that follows the same category. In the end, player 2 manages to guess the word "Animal"
 
 ![image](https://github.com/user-attachments/assets/d46076c6-a222-45e2-b2af-9e78e3c9847e)
 
+b)
+
 ![image](https://github.com/user-attachments/assets/0ed93623-52f7-4cb0-888e-a0caa2231b5e)
 
+
+## Repository_files
 
 ## Acknowledgements
 - Santiago Valdarrama. (2024). [llm](https://github.com/svpino/llm/tree/main). GitHub, who contributed significantly to the idealization of the project.
