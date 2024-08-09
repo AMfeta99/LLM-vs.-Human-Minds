@@ -67,6 +67,9 @@ After the installation is ready, give it a try. To get started, you will be aske
 
        0: 'llama2', 1: 'llama3'
 
+![image](https://github.com/user-attachments/assets/70b1d560-86aa-4d63-9658-7b000d398bea)
+
+
 
 
 
