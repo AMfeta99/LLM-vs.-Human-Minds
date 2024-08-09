@@ -32,8 +32,6 @@ These games allow you to choose between two modes:
 In this mode you can choose between several open source models, such as: llama3, llama2, etc..
 Although these models are not prepared for these games, it is an interesting/fun way to compare models, explore their behavior and understand some of their limitations.
 
-(descrever algumas das falhas observadas)
-
 ### LLM vs. Human Minds
 "Can u guess?" This is the game that challenges Human to face LLM models in a variety of games, from guessing to association games... challenge yourself! Will you be able to win?
 
@@ -79,6 +77,7 @@ b) LLM vs Human mode in which the user actually asks the question/answer and int
 
 ![image](https://github.com/user-attachments/assets/571424ec-bc80-45bc-a386-d0310524b8c2) 
 
+
 The three games have been implemented/tested, the following photos show the case of the Pattern puzzel game and the Impostor game running in LLM vs LLM mode using llama3:
 
 a) Pattern Puzzel Game: In this round, player 1 is the host and has entered a word/category and some examples that fall into that category. Player 2 tries to guess the word, he has 4 guesses, each time he guesses the host adds a new example that follows the same category. In the end, player 2 manages to guess the word "Animal"
@@ -89,6 +88,8 @@ b) Impostor Game: Three LLM take fazem parte deste jogo. In this round, Player 1
 
 ![image](https://github.com/user-attachments/assets/0ed93623-52f7-4cb0-888e-a0caa2231b5e)
 
+
+## Challenges
 
 ## Repository_files
 
