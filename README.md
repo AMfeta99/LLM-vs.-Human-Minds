@@ -20,7 +20,7 @@ This repository is the result of experiments with LLMs to develop skills in prom
    The Impostor Game challenges players to identify the spy among them. The host tries to find out who is the impostor by asking a questions about the given concept/word. If the host fails to correctly identify the 'spy', the other player earns a point. The game is played over multiple rounds, and the player with the highest score at the end is the winner.
 
 
-## Game modes
+## Game_modes
 These games allow you to choose between two modes:
 - LLM vs. LLM
    : Virtual players playing against each other.
