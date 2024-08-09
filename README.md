@@ -39,6 +39,9 @@ Who said AI is complex, difficult and scary? In fact AI can also be interesting 
 
 Optionally (in case of [OpenAI API](https://openai.com/index/openai-api)
 - Create account to get your API Key
+- Create a .env file with the following variable:
+  
+        OPENAI_API_KEY = [ENTER YOUR OPENAI API KEY HERE]
 
 
 
