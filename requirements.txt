@@ -1,2 +1,7 @@
-argparse  ## to run from comand line
 langchain
+langchain-openai
+langchain-groq
+python-dotenv
+jsonlib
+argparse
+ollama
