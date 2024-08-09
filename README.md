@@ -30,6 +30,11 @@ Although these models are not prepared for these games, it is an interesting/fun
 Who said AI is complex, difficult and scary? In fact AI can also be interesting and fun...  so just relax and exercise your brain and has fun challenging the state of the model ;)
 
 ## Setup
+- Create a virtual environment and install the required packages:
+      $ python3 -m venv .venv
+      $ source .venv/bin/activate
+      $ pip install -r requirements.txt
+  
 
 ## Acknowledgements
 https://medium.com/@GPTPlus/ai-in-human-robot-interaction-884ef04bdd88
