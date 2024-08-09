@@ -106,9 +106,9 @@ Class/Method Files:
   -Game.py
 
 Config files containing all prompts used in each game for all actions/roles:
-  -Guessing_game.json
-  -PatternPuzzle_game.json
-  -Impostor_game.json
+  - Guessing_game.json
+  - PatternPuzzle_game.json
+  - Impostor_game.json
 
 
 ## Acknowledgements
