@@ -2,6 +2,7 @@
 
 This repository is the result of experiments with LLMs to develop skills in prompt eng and software development using state-of-the-art LLM and popular sources/tools such as langchain, Ollama APi, Openai API.
 
+![image](https://github.com/AMfeta99/LLM-vs.-Human-Minds/assets/74252797/fc4107c1-d87f-41fb-9475-67dbc9b453fa)
 
 ## Games:
 **1 - Guessing Game:**
@@ -12,8 +13,6 @@ This repository is the result of experiments with LLMs to develop skills in prom
 
 **3 - Impostor Game (Who is Lying?):**
    The Impostor Game challenges players to identify the spy among them. The host tries to find out who is the impostor by asking a questions about the given concept/word. If the host fails to correctly identify the 'spy', the other player earns a point. The game is played over multiple rounds, and the player with the highest score at the end is the winner.
-
-![image](https://github.com/AMfeta99/LLM-vs.-Human-Minds/assets/74252797/fc4107c1-d87f-41fb-9475-67dbc9b453fa)
 
 
 ## Game modes
@@ -33,6 +32,11 @@ Although these models are not prepared for these games, it is an interesting/fun
 "Can u guess?" This is the game that challenges Human to face LLM models in a variety of games, from guessing to association games... challenge yourself! Will you be able to win?
 
 Who said AI is complex, difficult or scary? In fact AI can also be interesting and fun...  so just relax and exercise your brain and has fun challenging the state of the model ;)
+
+
+## 
+
+
 
 ## Setup
 - Create a virtual environment and install the required packages:
