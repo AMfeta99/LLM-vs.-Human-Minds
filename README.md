@@ -67,10 +67,16 @@ After the installation is ready, give it a try. To get started, you will be aske
 
        0: 'llama2', 1: 'llama3'
 
-In the following photos you can see an example of a guessing game in the case of LLM vs LLM mode in which the user is just watching:
+In the following photos you can see an example of a guessing game in the case of:
+
+a) LLM vs LLM mode in which the user is just watching:
+
 ![image](https://github.com/user-attachments/assets/70b1d560-86aa-4d63-9658-7b000d398bea)
+
+b) LLM vs Human mode in which the user actually asks the question/answer and interacts with the virtual player.
+
 ![image](https://github.com/user-attachments/assets/571424ec-bc80-45bc-a386-d0310524b8c2) 
-and LLM vs Human mode in which the user actually asks the question/answer and interacts with the virtual player.
+
 
 
 
