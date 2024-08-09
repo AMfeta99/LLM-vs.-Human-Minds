@@ -93,17 +93,18 @@ After the installation is ready, give it a try. To get started, you will be aske
 ## Challenges
 
 ## Repository_files
-  -requirements.txt: text file with a list the packages used
+  - requirements.txt (text file with a list the packages used)
+  - Photos (folder with some screenshots of the games)
 
 Class/Method Files:
 
-  -Main.py
+  - Main.py (Main file, initialize/configure the game, allow selection of game options)
   
-  -Init_methods.py
+  - Init_methods.py (methods for game configuration)
   
-  -Player.py
+  - Player.py (Player class, implements player's roles, actions, and prompts to perform while playing)
   
-  -Game.py
+  - Game.py (Game class manages the overall flow of the game, determining which player should take action at each stage etc)
 
 Config files containing all prompts used in each game for all actions/roles:
   - Guessing_game.json
