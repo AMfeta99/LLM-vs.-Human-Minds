@@ -83,6 +83,7 @@ The three games have been implemented/tested, the following photos show the case
 
 ![image](https://github.com/user-attachments/assets/d46076c6-a222-45e2-b2af-9e78e3c9847e)
 
+![image](https://github.com/user-attachments/assets/0ed93623-52f7-4cb0-888e-a0caa2231b5e)
 
 
 ## Acknowledgements
