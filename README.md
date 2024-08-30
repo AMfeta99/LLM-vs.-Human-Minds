@@ -1,6 +1,8 @@
 # LLM vs. Human Minds
 
 This repository is the result of experiments with LLMs to develop skills in prompt eng and software development using state-of-the-art LLM and popular sources/tools such as langchain, Ollama APi, Openai API.
+
+## Index:
 - [Games](#Games)
 - [Game Modes](#Game_modes)
 - [Setup](#Setup)
