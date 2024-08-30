@@ -11,6 +11,7 @@ This repository is the result of experiments with LLMs to develop skills in prom
 - [Repository_files](#Repository_files)
 - [Acknowledgements](#Acknowledgements)
   
+  
 ![image](https://github.com/AMfeta99/LLM-vs.-Human-Minds/assets/74252797/fc4107c1-d87f-41fb-9475-67dbc9b453fa)
 
 ## Games:
